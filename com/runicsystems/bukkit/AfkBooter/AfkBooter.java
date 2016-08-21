@@ -663,9 +663,9 @@ public class AfkBooter extends JavaPlugin
                         log("Kicking player " + playerName, Level.INFO);
                         // Stop tracking them, since we're booting them.
                         lastPlayerActivity.remove(playerName);
-                        if(player.isOnline())
-                            player.kickPlayer(settings.getKickMessage());
-                        else
+                        if(player.isOnline()) {
+                            getServer().dispatchCommand(player, settings.getKickMessage());
+                        } else
                             continue;
 
                         // Don't output the broadcast message if it's set to empty or null.
